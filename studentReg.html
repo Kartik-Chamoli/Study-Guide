@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link href='http://fonts.googleapis.com/css?family=Bitter' rel='stylesheet' type='text/css'>
+    <link rel="stylesheet" type="text/css" href="studentReg.css">
+    <script src="studentReg.js" defer></script>
+</head>
+<body>
+
+    <div class="form-style-10">
+        <h1>Register Now!<span>Register now and contribute to the website!</span></h1>
+        <form>
+            <div class="section"><span>1</span>First Name & Address</div>
+            <div class="inner-wrap">
+                <label>Your Full Name <input type="text" id="fullName" name="field1" /></label>
+                <label>Address <textarea id="address" name="field2"></textarea></label>
+            </div>
+            <div class="section"><span>2</span>Age and PhoneNo</div>
+            <div class="inner-wrap">
+                <label>Age <input id="age" type="text" name="field3" /></label>
+                <label>Phone No<input id="phoneNo" type="text" name="field4" /></label>
+            </div>
+
+            <div class="section"><span>3</span>RollNo and Course</div>
+            <div class="inner-wrap">
+                <label>Roll No <input id="rollNo" type="text" name="field3" /></label>
+                <label>Course <input id="course" type="text" name="field4" /></label>
+            </div>
+        
+            <div class="section"><span>4</span>Semester and Shift</div>
+                <div class="inner-wrap">
+                <label>Semester<input id="semester" type="text" name="field5" /></label>
+                <label>Shift<input id="shift" type="text" name="field6" /></label>
+            </div>
+            <div class="button-section">
+             <input id="submit" type="submit" name="Sign Up" />
+             <span class="privacy-policy">
+             <input type="checkbox" name="field7">You agree to our Terms and Policy. 
+             </span>
+            </div>
+        </form>
+        </div>
+
+
+<script src="https://www.gstatic.com/firebasejs/7.8.2/firebase-app.js"></script>
+<script src="https://www.gstatic.com/firebasejs/7.8.2/firebase-auth.js"></script>
+<script src="https://www.gstatic.com/firebasejs/7.8.2/firebase-database.js"></script>
+<!-- TODO: Add SDKs for Firebase products that you want to use
+     https://firebase.google.com/docs/web/setup#available-libraries -->
+<script src="https://www.gstatic.com/firebasejs/7.8.2/firebase-analytics.js"></script>
+
+<script>
+  // Your web app's Firebase configuration
+  var firebaseConfig = {
+    apiKey: "AIzaSyCuEcmqZpri9N3vxSPMp1p7zACcIy_3ZC4",
+    authDomain: "college-learn.firebaseapp.com",
+    databaseURL: "https://college-learn.firebaseio.com",
+    projectId: "college-learn",
+    storageBucket: "college-learn.appspot.com",
+    messagingSenderId: "427931622347",
+    appId: "1:427931622347:web:beb067c9539691ea34744e",
+    measurementId: "G-C0ZYGNG27C"
+  };
+  // Initialize Firebase
+  firebase.initializeApp(firebaseConfig);
+</script>
+</body>
+</html>

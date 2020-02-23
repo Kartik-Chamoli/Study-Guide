@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+    <link rel="stylesheet" type="text/css" href="style.css">
+    <script type="text/javascript" src="script.js" defer></script>
+</head>
+<body>
+    <div class="containter">
+    Name: <input id="name" type="text" size="20" maxlength=20>
+    <br><br>
+    Age: <input id="Age" type="text" size="20" maxlength=3>
+    <br><br>
+
+    RollNo: <input id="RollNo" type="text" size="20" maxlength=11>
+    <br><br>
+
+    <button id="submit" type="button">Submit</button>
+    <button id="retrieve" type="button"> Retrieve data</button>
+    <button id="clear" type="button">Clear data</button>
+    </div>
+
+
+              <!-- firebase code starts here -->
+
+    <!-- The core Firebase JS SDK is always required and must be listed first -->
+<script src="https://www.gstatic.com/firebasejs/7.8.2/firebase-app.js"></script>
+<script src="https://www.gstatic.com/firebasejs/7.8.2/firebase-auth.js"></script>
+<script src="https://www.gstatic.com/firebasejs/7.8.2/firebase-database.js"></script>
+<!-- TODO: Add SDKs for Firebase products that you want to use
+     https://firebase.google.com/docs/web/setup#available-libraries -->
+<script src="https://www.gstatic.com/firebasejs/7.8.2/firebase-analytics.js"></script>
+
+<script>
+  // Your web app's Firebase configuration
+  var firebaseConfig = {
+    apiKey: "AIzaSyCuEcmqZpri9N3vxSPMp1p7zACcIy_3ZC4",
+    authDomain: "college-learn.firebaseapp.com",
+    databaseURL: "https://college-learn.firebaseio.com",
+    projectId: "college-learn",
+    storageBucket: "college-learn.appspot.com",
+    messagingSenderId: "427931622347",
+    appId: "1:427931622347:web:beb067c9539691ea34744e",
+    measurementId: "G-C0ZYGNG27C"
+  };
+  // Initialize Firebase
+  firebase.initializeApp(firebaseConfig);
+  firebase.analytics();
+</script>
+</body>
+</html>
