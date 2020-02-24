@@ -11,17 +11,16 @@ let email,password;
 
 function register(role){
   email = document.querySelector('#email').value;
-     password = document.querySelector('#password').value;
+  password = document.querySelector('#password').value;
 
     firebase.auth().createUserWithEmailAndPassword(email, password).then(()=>{
       if(role==="student") window.location.href="studentReg.html";
       else window.location.href="teacherReg.html";
-
     }).catch(function(error) {
         var errorCode = error.code;
         var errorMessage = error.message;
         alert(errorCode, errorMessage);
-      });
+    });
 }
 
 function login(role){
@@ -39,7 +38,7 @@ function login(role){
 }
 
 regBtnStu.addEventListener('click',()=>{
-     register('student');
+  register('student');
 })
 
 regBtnTeach.addEventListener('click',()=>{

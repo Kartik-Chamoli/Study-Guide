@@ -12,7 +12,7 @@ function getVal(){
 
 
 //teacherDB
-var teacherDbReference = firebase.database().ref().child("teacher");
+var teacherDbReference = firebase.database().ref().child("Teacher");
 
 let subBtn = document.querySelector('#submit');
 // let retBtn = document.querySelector('#retrieve');

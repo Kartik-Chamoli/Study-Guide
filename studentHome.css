@@ -1,0 +1,89 @@
+* {
+    box-sizing: border-box;
+}
+
+body {
+    font-family: -apple-system,BlinkMacSystemFont,Segoe UI,Helvetica,Arial,sans-serif,Apple Color Emoji,Segoe UI Emoji;
+    margin: 0;
+    font-size: 14px;
+    line-height: 1.5;
+    color: #24292e;
+    background-color: #fff;
+}
+
+.profileHeader {
+    position: relative !important;
+    width: auto;
+    height: 100px;
+    margin: 0px;
+    background-color: #24292e;
+}
+
+.profileName {
+    height: 100px;
+    font-size: 50px;
+    position: relative;
+    padding-top: 10px;
+    padding-left: 20px;
+    padding-bottom: 10px;
+    color: rgb(255, 255, 255);
+}
+
+.profilePic {
+    position: absolute;
+    z-index: 1;
+    left: 80%;
+    top: 50px;
+}
+
+.profileNav {
+    display: none;
+    position: fixed;
+    background-color: #fff;
+    top: 0;
+    bottom: 0.5;
+    right: 0;
+    max-height: 100%;
+    z-index: 100;
+    width: 300px;
+    overflow: auto;
+    box-shadow: 0 10px 50px rgba(27,31,35,.15);
+}
+
+.profileNav table {
+    margin-top: auto;
+    margin-left: auto;
+    margin-right: auto;
+    text-align: center;
+}
+
+table.hovertable {
+	font-family: verdana,arial,sans-serif;
+	font-size:11px;
+	color:#333333;
+	border-width: 1px;
+	border-color: #999999;
+	border-collapse: collapse;
+}
+table.hovertable th {
+	background-color:#c3dde0;
+	border-width: 1px;
+	padding: 8px;
+	border-style: solid;
+	border-color: #a9c6c9;
+}
+table.hovertable tr {
+	background-color:#d4e3e5;
+}
+table.hovertable tr:hover {
+	background-color:#44a374;
+}
+table.hovertable tr:last-child:hover {
+	background-color:#bd4545;
+}
+table.hovertable td {
+	border-width: 1px;
+	padding: 8px;
+	border-style: solid;
+	border-color: #a9c6c9;
+}
