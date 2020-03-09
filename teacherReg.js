@@ -1,6 +1,6 @@
 let user;
 let teacherDetails=[];
-
+let form = document.querySelector('.newForm');
 function getVal(){
     teacherDetails[0]=document.querySelector('#fullName').value;
     teacherDetails[1]=document.querySelector('#designation').value;
@@ -14,12 +14,10 @@ function getVal(){
 //teacherDB
 var teacherDbReference = firebase.database().ref().child("Teacher");
 
-let subBtn = document.querySelector('#submit');
 // let retBtn = document.querySelector('#retrieve');
 
-
-//Adding Data to database
-subBtn.addEventListener('click',()=>{
+form.addEventListener('submit',(event)=>{
+    event.preventDefault();
     user= firebase.auth().currentUser;
     getVal();
 
@@ -31,8 +29,10 @@ subBtn.addEventListener('click',()=>{
         Subject:teacherDetails[3],
         Course:teacherDetails[4],
         teachExp:teacherDetails[5],
-    });
-
+    },(error)=>{
+        if(error) alert(error);
+        else window.location.replace("teacherHome.html");
+    })
 });
 
 

@@ -12,31 +12,31 @@
 
     <div class="form-style-10">
         <h1>Register Now!<span>Register now and contribute to the website!</span></h1>
-        <form>
+        <form class="newForm">
             <div class="section"><span>1</span>First Name & Designation</div>
             <div class="inner-wrap">
-                <label>Your Full Name <input type="text" id="fullName" name="field1" /></label>
-                <label>Designation<textarea id="designation" name="field2"></textarea></label>
+                <label>Your Full Name <input type="text" id="fullName" name="field1" required/></label>
+                <label>Designation<textarea id="designation" name="field2" required></textarea></label>
             </div>
             <div class="section"><span>2</span>Place you teach at </div>
             <div class="inner-wrap">
-                <label>School/College <input id="college" type="text" name="field3" /></label>
+                <label>School/College <input id="college" type="text" name="field3" required /></label>
             </div>
 
             <div class="section"><span>3</span>Subjects you teach and Course</div>
             <div class="inner-wrap">
-                <label>Subject Name<input id="subject" type="text" name="field3" /></label>
-                <label>Course <input id="course" type="text" name="field4" /></label>
+                <label>Subject Name<input id="subject" type="text" name="field3" required/></label>
+                <label>Course <input id="course" type="text" name="field4" required/></label>
             </div>
         
             <div class="section"><span>4</span>Teaching Experience in yrs</div>
                 <div class="inner-wrap">
-                <label>Teaching Experience<input id="teachExp" type="text" name="field5" /></label>
+                <label>Teaching Experience<input id="teachExp" type="text" name="field5" required/></label>
             </div>
             <div class="button-section">
              <input id="submit" type="submit" name="Sign Up" />
              <span class="privacy-policy">
-             <input type="checkbox" name="field7">You agree to our Terms and Policy. 
+             <input type="checkbox" name="field7" required>You agree to our Terms and Policy. 
              </span>
             </div>
         </form>

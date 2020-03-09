@@ -1,5 +1,6 @@
 let user;
 let studentDetails=[];
+let form = document.querySelector('.newForm');
 
 function getVal(){
     studentDetails[0]=document.querySelector('#fullName').value;
@@ -16,12 +17,12 @@ function getVal(){
 //STUDENTDB
 var studentDbReference = firebase.database().ref().child("Student");
 
-let subBtn = document.querySelector('#submit');
 // let retBtn = document.querySelector('#retrieve');
 
 
 //Adding Data to database
-subBtn.addEventListener('click',()=>{
+form.addEventListener('submit',(event)=>{
+    event.preventDefault();
     user=firebase.auth().currentUser;
     getVal();
 
@@ -35,6 +36,9 @@ subBtn.addEventListener('click',()=>{
         Shift:studentDetails[5],
         PhoneNo:studentDetails[6],
         Semester:studentDetails[7],
+    },(error)=>{
+        if(error) alert(error);
+        else window.location.href="studentHome.html";
     });
 
 });

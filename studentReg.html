@@ -12,33 +12,33 @@
 
     <div class="form-style-10">
         <h1>Register Now!<span>Register now and contribute to the website!</span></h1>
-        <form>
+        <form class="newForm">
             <div class="section"><span>1</span>First Name & Address</div>
             <div class="inner-wrap">
-                <label>Your Full Name <input type="text" id="fullName" name="field1" /></label>
-                <label>Address <textarea id="address" name="field2"></textarea></label>
+                <label>Your Full Name <input type="text" id="fullName" name="field1" required /></label>
+                <label>Address <textarea id="address" name="field2" required></textarea></label>
             </div>
             <div class="section"><span>2</span>Age and PhoneNo</div>
             <div class="inner-wrap">
-                <label>Age <input id="age" type="text" name="field3" /></label>
-                <label>Phone No<input id="phoneNo" type="text" name="field4" /></label>
+                <label>Age <input id="age" type="text" name="field3" required/></label>
+                <label>Phone No<input id="phoneNo" type="text" name="field4" required/></label>
             </div>
 
             <div class="section"><span>3</span>RollNo and Course</div>
             <div class="inner-wrap">
-                <label>Roll No <input id="rollNo" type="text" name="field3" /></label>
-                <label>Course <input id="course" type="text" name="field4" /></label>
+                <label>Roll No <input id="rollNo" type="text" name="field3" required/></label>
+                <label>Course <input id="course" type="text" name="field4" required/></label>
             </div>
         
             <div class="section"><span>4</span>Semester and Shift</div>
                 <div class="inner-wrap">
-                <label>Semester<input id="semester" type="text" name="field5" /></label>
-                <label>Shift<input id="shift" type="text" name="field6" /></label>
+                <label>Semester<input id="semester" type="text" name="field5" required/></label>
+                <label>Shift<input id="shift" type="text" name="field6" required/></label>
             </div>
             <div class="button-section">
-             <input id="submit" type="submit" name="Sign Up" />
-             <span class="privacy-policy">
-             <input type="checkbox" name="field7">You agree to our Terms and Policy. 
+                <input id="submit" type="submit" name="Sign Up" />
+                <span class="privacy-policy">
+             <input type="checkbox" name="field7" required>You agree to our Terms and Policy. 
              </span>
             </div>
         </form>
