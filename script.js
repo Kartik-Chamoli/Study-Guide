@@ -1,59 +1,84 @@
-let studentDetails=[];
+//Check if user is logged in or not
+let user = firebase.auth().currentUser;
 
-function getVal(){
-    studentDetails[0]=document.querySelector('#name').value;
-    studentDetails[1]=document.querySelector('#Age').value;
-    studentDetails[2]=document.querySelector('#RollNo').value;
-}
+let regBtnStu = document.querySelector('#registerBtnStu');
+let loginBtnStu = document.querySelector('#loginBtnStu');
 
-function clearVal(){
-    document.querySelector('#name').value='';
-    document.querySelector('#Age').value='';
-    document.querySelector('#RollNo').value='';
-}
+let regBtnTeach = document.querySelector('#registerBtnTeach');
+let loginBtnTeach = document.querySelector('#loginBtnTeach');
+// let logoutbtn = document.querySelector('#logoutbtn');
+let email,password;
 
-//STUDENTDB
-var studentDbReference = firebase.database().ref().child("Student");
+function register(role){
+  email = document.querySelector('#email').value;
+  password = document.querySelector('#password').value;
 
-let subBtn = document.querySelector('#submit');
-let retBtn = document.querySelector('#retrieve');
-let clearBtn = document.querySelector('#clear');
-
-
-//ClearBtn
-clearBtn.addEventListener('click',()=>{
-    clearVal();
-});
-
-
-//Adding Data to database
-subBtn.addEventListener('click',()=>{
-
-    getVal();
-
-    //Using Rollno as parent
-    studentDbReference.child(studentDetails[2]).set({
-        Name:studentDetails[0],
-        Age:studentDetails[1],
+    firebase.auth().createUserWithEmailAndPassword(email, password).then(()=>{
+      if(role==="student") window.location.href="studentReg.html";
+      else window.location.href="teacherReg.html";
+    }).catch(function(error) {
+        var errorCode = error.code;
+        var errorMessage = error.message;
+        alert(errorCode, errorMessage);
     });
+}
 
-    // //Random Push
-    // studentDbReference.push().set({
-    //     Name:studentDetails[0],
-    //     Age:studentDetails[1],
-    //     RollNo:studentDetails[2],
-    // })
+function login(role){
+  email = document.querySelector('#email').value;
+  password = document.querySelector('#password').value;
+  firebase.auth().signInWithEmailAndPassword(email, password).then(()=>{
+    if(role==="student") window.location.href="studentHome.html";
+    else window.location.href="teacherHome.html";
+  }).catch(function(error) {
+      // Handle Errors here.
+      var errorCode = error.code;
+      var errorMessage = error.message;
+      alert(errorCode,errorMessage);
+    });
+}
 
-    clearVal();
-
-
-});
-
-//Retrieving Data from database
-retBtn.addEventListener('click',()=>{
-    studentDetails[2] = document.querySelector('#RollNo').value;
-    studentDbReference.child(studentDetails[2]).on('value',(datasnapshot)=>{
-        document.querySelector('#name').value=datasnapshot.val().Name;
-        document.querySelector('#Age').value=datasnapshot.val().Age;
-    })
+regBtnStu.addEventListener('click',()=>{
+  register('student');
 })
+
+regBtnTeach.addEventListener('click',()=>{
+  register('teacher');
+})
+
+loginBtnStu.addEventListener('click',()=>{
+   login('student');
+})
+
+loginBtnTeach.addEventListener('click',()=>{
+  login('teacher');
+})
+
+// logoutbtn.addEventListener('click',()=>{
+//     firebase.auth().signOut();
+// })
+
+firebase.auth().onAuthStateChanged(function(user) {
+    if (user) {
+        if(user.emaildVerified){
+            console.log('Verified');
+        }
+        else{
+            console.log('EMAIL not verified');
+            // user.sendEmailVerification();  IMPORTANT FOR SENDING VERIFICATION
+        }   //     console.log('User is logged in');
+    //   // User is signed in.
+    //   var displayName = user.displayName;
+    //   var email = user.email;
+    //   var emailVerified = user.emailVerified;
+    //   var photoURL = user.photoURL;
+    //   var isAnonymous = user.isAnonymous;
+    //   var uid = user.uid;
+    //   var providerData = user.providerData;
+    //   console.log(emailVerified);
+    
+      // ...
+    } else {
+      console.log('User is not logged in');
+    }
+  });
+
