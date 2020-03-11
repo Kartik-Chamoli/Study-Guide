@@ -1,34 +1,32 @@
-let profilePic = document.getElementsByClassName("profilePic")[0];
-let nav = document.getElementsByClassName("profileNav")[0];
-profilePic.addEventListener('click', () => {
-    nav.style.display = "block";
-    console.log(nav);
-})
+let ProfileName = document.querySelector('.profileName');
+let profilePic = document.querySelector('.dropbtn');
+let globalData;
+let User;
 
-/*
-nav.addEventListener('mouseout', ()=>{
-    nav.style.display = "none";
-})
-*/
+firebase.auth().onAuthStateChanged(function(user) {
+  if (user) {
+      var studentDbReference = firebase.database().ref().child("Student");
+      User = firebase.auth().currentUser.uid;
+      
+      studentDbReference.child(User).on('value',(datasnapshot)=>{
+          globalData=datasnapshot.val();
+          ProfileName.innerText = ProfileName.innerText.replace('${%STUDENTNAME%}$',globalData.Name);
+          if(globalData.DownloadUrl!=undefined) profilePic.src=globalData.DownloadUrl;
+        });
 
-let tableElements = document.getElementsByClassName("tableElement");
-console.log(tableElements);
-tableElements[0].addEventListener('click', ()=>{
-  nav.style.display = "none";
-})
-tableElements[5].addEventListener('click', ()=>{
-  firebase.auth().signOut().then(function() {
-    window.location.href="auth.html";
-  }).catch(function(error) {
-    console.log(error);
-  });
-})
+  } else {
+    alert("No user is signed in");
+  }
+});
 
-let logOutBtn = document.querySelector("#logOut");
-logOutBtn.addEventListener('click', ()=> {
-    firebase.auth().signOut().then(function() {
-        window.location.href="auth.html";
-      }).catch(function(error) {
-        console.log(error);
-      });
+
+
+let pillNavElement = document.querySelector('.pill-nav');
+pillNavElement.addEventListener('click',()=>{
+document.querySelector('.main-content').innerHTML='';
+
+document.querySelectorAll('.pill-nav a').forEach(item=>{
+  item.classList.remove('active');
+})
+event.explicitOriginalTarget.classList.toggle('active');
 })

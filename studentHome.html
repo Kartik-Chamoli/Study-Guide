@@ -10,43 +10,34 @@
 <body>
     <div class="profileHeader">
         <div class="profileName">
-            WELCOME STUDENT
+            WELCOME ${%STUDENTNAME%}$
         </div>
-        <img class="profilePic" src="assets/user.png" width="96" height="96" alt="PFP">
+        <div class="dropdown">
+            <img class="dropbtn" src="assets/user.png" width="96" height="96" alt="PFP">
+        </button>
+            <div class="dropdown-content">
+              <a href="#">Link 1</a>
+              <a href="#">Link 2</a>
+              <a id="logout" href="index.html">Logout</a>
+            </div>
+          </div>
     </div>
 
+    <div class="pill-nav">
+        <a  href="#">Upload Files</a>
+        <a href="#">View Uploaded Files</a>
+        <a href="#">Contact</a>
+        <a href="#">About</a>
+      </div>
 
-    <div class="profileNav">
-        <table class="hovertable" width="300px">
-            <tr class="tableElement">
-                <td><img src="https://image.flaticon.com/icons/svg/2089/2089733.svg" alt="close" width="16" height="16"></td>
-            </tr>
-            <tr class="tableElement">
-                <td>SAMPLE</td>
-            </tr>
-            <tr class="tableElement">
-                <td>SAMPLE</td>
-            </tr>
-            <tr class="tableElement">
-                <td>SAMPLE</td>
-            </tr>
-            <tr class="tableElement">
-                <td>SAMPLE</td>
-            </tr>
-            <tr class="tableElement">
-                <td>LOG OUT</td>
-            </tr>
-        </table>
-    </div>
+      <div class="main-content">
 
-
-    <!-- 
-    <div> Icons made by <a href="https://www.flaticon.com/authors/smashicons" title="Smashicons">Smashicons</a> from <a href="https://www.flaticon.com/" title="Flaticon"> www.flaticon.com</a>
-    </div>
-    -->
-
+      </div>
     <script src="https://www.gstatic.com/firebasejs/7.8.2/firebase-app.js"></script>
     <script src="https://www.gstatic.com/firebasejs/7.8.2/firebase-auth.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/7.8.2/firebase-database.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/7.10.0/firebase-storage.js"></script>
+
     <script src="firebaseconfig.js"></script>
 </body>
 </html>

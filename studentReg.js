@@ -1,6 +1,17 @@
 let user;
 let studentDetails=[];
 let form = document.querySelector('.newForm');
+let imageSelect = document.querySelector('#ProfilePic');
+let DownloadUrl;
+
+imageSelect.addEventListener('change',()=>{
+    let storageRef = firebase.storage().ref('Student/'+firebase.auth().currentUser.uid+'/ProfilePicture/'+imageSelect.files[0].name);
+    storageRef.put(imageSelect.files[0]).then((snapshot=>{
+    return snapshot.ref.getDownloadURL();
+    })).then(downloadUrl=>{
+        DownloadUrl = downloadUrl;
+    });
+    })
 
 function getVal(){
     studentDetails[0]=document.querySelector('#fullName').value;
@@ -11,6 +22,8 @@ function getVal(){
     studentDetails[5]=document.querySelector('#shift').value;
     studentDetails[6]=document.querySelector('#phoneNo').value;
     studentDetails[7]=document.querySelector('#semester').value;
+    studentDetails[8]=DownloadUrl;
+
 }
 
 
@@ -36,6 +49,7 @@ form.addEventListener('submit',(event)=>{
         Shift:studentDetails[5],
         PhoneNo:studentDetails[6],
         Semester:studentDetails[7],
+        DownloadUrl:DownloadUrl,
     },(error)=>{
         if(error) alert(error);
         else window.location.href="studentHome.html";

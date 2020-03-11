@@ -1,4 +1,5 @@
-let wow = document.querySelector('.profileName');
+let ProfileName = document.querySelector('.profileName');
+let profilePic = document.querySelector('.dropbtn');
 let globalData;
 let User;
 
@@ -24,15 +25,15 @@ firebase.auth().onAuthStateChanged(function(user) {
         
         teacherDbReference.child(User).on('value',(datasnapshot)=>{
             globalData=datasnapshot.val();
-            wow.innerText = wow.innerText.replace('${%TEACHERNAME%}$',globalData.Name);
-        })
+            ProfileName.innerText = ProfileName.innerText.replace('${%TEACHERNAME%}$',globalData.Name);
+            if(globalData.DownloadUrl!=undefined) profilePic.src=globalData.DownloadUrl;
+          });
+
     } else {
       alert("No user is signed in");
     }
   });
   
-  let testEle;
-
 let pillNavElement = document.querySelector('.pill-nav');
 pillNavElement.addEventListener('click',()=>{
   document.querySelector('.main-content').innerHTML='';
