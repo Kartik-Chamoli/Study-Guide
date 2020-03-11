@@ -17,20 +17,20 @@ uppy.on('complete', (result) => {
           switch(file.name.split('.').pop()){
             case "mp4":
             case "avi":
-                storageRef = firebase.storage().ref('Teacher'+User+'/Videos/'+file.name);
+                storageRef = firebase.storage().ref('Teacher/'+User+'/Videos/'+file.name);
             break;
               
             case 'jpg':
             case 'jpeg':
             case 'png':
-                storageRef = firebase.storage().ref('Teacher'+User+'/Images/'+file.name);
+                storageRef = firebase.storage().ref('Teacher/'+User+'/Images/'+file.name);
             break;
             
             case 'pptx':
             case 'pdf':
             case 'ppt':
             case 'odp':
-                storageRef = firebase.storage().ref('Teacher'+User+'/WrittenMaterial/'+file.name);
+                storageRef = firebase.storage().ref('Teacher/'+User+'/WrittenMaterial/'+file.name);
             break;
             
             default:
