@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link rel="stylesheet" type="text/css" href="style.css">
+    <script src="https://www.gstatic.com/firebasejs/7.8.2/firebase-app.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/7.10.0/firebase-storage.js"></script>
+    <script type="text/javascript" src="script.js" defer></script>
+</head>
+<body>
+    
+<button class="collapsible">Videos</button>
+<div class="content">
+</div>
+<button class="collapsible">Images</button>
+<div class="content">
+</div>
+<button class="collapsible">Written Material</button>
+<div class="content">
+</div>
+
+<script>
+    var firebaseConfig = {
+        apiKey: "AIzaSyBHCBLJvw0QUr1-sSnEe8JfTETxUINSmuA",
+        authDomain: "fir-9f2a9.firebaseapp.com",
+        databaseURL: "https://fir-9f2a9.firebaseio.com",
+        projectId: "fir-9f2a9",
+        storageBucket: "fir-9f2a9.appspot.com",
+        messagingSenderId: "445883372026",
+        appId: "1:445883372026:web:c3fc8931c795b88fe61443"
+};
+
+firebase.initializeApp(firebaseConfig);
+</script>
+</body>
+</html>

@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+    <link rel="stylesheet" href="teacherslist.css">
+    <link rel="stylesheet" href="../content/style.css">
+    <script src="teachersList.js" defer></script>
+</head>
+<body>
+    <div id="card-content" style="display: none;">
+        <button onclick="backToList()"> BACK TO LIST </button>
+        <button class="collapsible">Videos</button>
+        <div class="content">
+        </div>
+        <button class="collapsible">Images</button>
+        <div class="content">
+        </div>
+        <button class="collapsible">Written Material</button>
+        <div class="content">
+        </div>
+    </div>
+    <div id="card-holder">
+        <!--div class="card">
+            <img src="img.jpg" alt="John" style="width:100%">
+            <h1>John Doe</h1>
+            <p class="title">CEO & Founder, Example</p>
+            <p>Harvard University</p>
+            <a href="#"><i class="fa fa-dribbble"></i></a>
+            <a href="#"><i class="fa fa-twitter"></i></a>
+            <a href="#"><i class="fa fa-linkedin"></i></a>
+            <a href="#"><i class="fa fa-facebook"></i></a>
+            <p><button>Contact</button></p>
+          </div-->
+    </div>
+
+    <script src="https://www.gstatic.com/firebasejs/7.8.2/firebase-app.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/7.8.2/firebase-auth.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/7.8.2/firebase-database.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/7.10.0/firebase-storage.js"></script>
+
+    <script src="../../firebaseconfig.js"></script>
+</body>
+</html>

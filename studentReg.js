@@ -11,7 +11,7 @@ imageSelect.addEventListener('change',()=>{
     })).then(downloadUrl=>{
         DownloadUrl = downloadUrl;
     });
-    })
+})
 
 function getVal(){
     studentDetails[0]=document.querySelector('#fullName').value;
