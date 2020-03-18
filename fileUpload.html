@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link rel="stylesheet" type="text/css" href="fileUpload.css">
+    <script src="https://www.gstatic.com/firebasejs/7.8.2/firebase-app.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/7.10.0/firebase-storage.js"></script>
+    <script type="text/javascript" src="fileUpload.js" defer></script>
+</head>
+<body>
+    
+<button class="collapsible">Videos</button>
+<div class="content">
+</div>
+<button class="collapsible">Images</button>
+<div class="content">
+</div>
+<button class="collapsible">Written Material</button>
+<div class="content">
+</div>
+
+<script>
+    var firebaseConfig = {
+    apiKey: "AIzaSyCuEcmqZpri9N3vxSPMp1p7zACcIy_3ZC4",
+    authDomain: "college-learn.firebaseapp.com",
+    databaseURL: "https://college-learn.firebaseio.com",
+    projectId: "college-learn",
+    storageBucket: "college-learn.appspot.com",
+    messagingSenderId: "427931622347",
+    appId: "1:427931622347:web:beb067c9539691ea34744e",
+    measurementId: "G-C0ZYGNG27C"
+};
+
+firebase.initializeApp(firebaseConfig);
+</script>
+</body>
+</html>

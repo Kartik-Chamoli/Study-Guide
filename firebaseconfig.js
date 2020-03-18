@@ -15,15 +15,15 @@ var firebaseConfig = {
 
 /// ASHISH
 
-var firebaseConfig = {
-    apiKey: "AIzaSyBHCBLJvw0QUr1-sSnEe8JfTETxUINSmuA",
-    authDomain: "fir-9f2a9.firebaseapp.com",
-    databaseURL: "https://fir-9f2a9.firebaseio.com",
-    projectId: "fir-9f2a9",
-    storageBucket: "fir-9f2a9.appspot.com",
-    messagingSenderId: "445883372026",
-    appId: "1:445883372026:web:c3fc8931c795b88fe61443"
-};
+// var firebaseConfig = {
+//     apiKey: "AIzaSyBHCBLJvw0QUr1-sSnEe8JfTETxUINSmuA",
+//     authDomain: "fir-9f2a9.firebaseapp.com",
+//     databaseURL: "https://fir-9f2a9.firebaseio.com",
+//     projectId: "fir-9f2a9",
+//     storageBucket: "fir-9f2a9.appspot.com",
+//     messagingSenderId: "445883372026",
+//     appId: "1:445883372026:web:c3fc8931c795b88fe61443"
+// };
 
 
 // Initialize Firebase

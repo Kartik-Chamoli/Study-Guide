@@ -18,6 +18,22 @@ function uploadFileHtml(){
   mainContent.innerHTML = uploadHtmlString;
 }
 
+function showUploadedFiles(){
+  let mainContent=document.querySelector('.main-content');
+  mainContent.innerHTML = `<button class="collapsible">Videos</button>
+  <div class="content">
+  </div>
+  <button class="collapsible">Images</button>
+  <div class="content">
+  </div>
+  <button class="collapsible">Written Material</button>
+  <div class="content">
+  </div>`;
+
+  var showUploadScript = document.createElement('script');
+  showUploadScript.setAttribute('src','fileUpload.js');
+  document.head.appendChild(showUploadScript);
+}
 
 firebase.auth().onAuthStateChanged(function(user) {
     if (user) {
@@ -45,5 +61,8 @@ pillNavElement.addEventListener('click',()=>{
   event.explicitOriginalTarget.classList.toggle('active');
   if(event.target.text==="Upload Files"){
     uploadFileHtml();
+  }
+  else if(event.target.text==="View Uploaded Files"){
+    showUploadedFiles();
   }
 })

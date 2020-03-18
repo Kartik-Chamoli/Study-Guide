@@ -46,8 +46,7 @@ uppy.on('complete', (result) => {
             elem.style.width=progress+"%";
             if(progress===100){
                 uppy.removeFile(item.id);
-                uppy.info(`${indexStore} files have been uploaded successfully`);
-                elem.style.width='0%';
+                uppy.info(`${indexStore} files are being uploaded to the server`);
             }
           });
           indexStore++;
@@ -57,5 +56,4 @@ uppy.on('complete', (result) => {
             uppy.info(`Invalid format file only ppt, pdf, mp4, avi, jpg, jpeg, pptx, supported`);
         }
       });
-      
 })
