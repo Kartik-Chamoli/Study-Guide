@@ -2,6 +2,7 @@ let ProfileName = document.querySelector('.profileName');
 let profilePic = document.querySelector('.dropbtn');
 let globalData;
 let User;
+uploadFileHtml();
 
 function uploadFileHtml(){
   let uploadHtmlString = `<div id="drag-drop-area"></div>
