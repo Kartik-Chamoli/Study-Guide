@@ -32,28 +32,57 @@ var studentDbReference = firebase.database().ref().child("Student");
 
 // let retBtn = document.querySelector('#retrieve');
 
-
 //Adding Data to database
 form.addEventListener('submit',(event)=>{
     event.preventDefault();
     user=firebase.auth().currentUser;
     getVal();
 
-    //Using Rollno as parent
-    studentDbReference.child(user.uid).set({
-        Name:studentDetails[0],
-        Age:studentDetails[1],
-        RollNo:studentDetails[2],
-        Address:studentDetails[3],
-        Course:studentDetails[4],
-        Shift:studentDetails[5],
-        PhoneNo:studentDetails[6],
-        Semester:studentDetails[7],
-        DownloadUrl:DownloadUrl,
-    },(error)=>{
-        if(error) alert(error);
-        else window.location.href="studentHome.html";
-    });
+    studentDbReference.child(`${user.uid}`).once('value').then(db=>{
+        db = db.val();
+        console.log(db);
+        console.log(`Filter/Student/${db.Course}/${db.Semester}/${db.Shift}/${user.uid}`);
+        var adaRef = firebase.database().ref(`Filter/Student/${db.Course}/${db.Semester}/${db.Shift}/${user.uid}`);
+        adaRef.remove()
+        .then(function() {
+            console.log("Remove succeeded.");
+            update();
+        })
+        .catch(function(error) {
+            console.log("Remove failed: " + error.message);
+            update();
+        });
+    })
+    
+    function update(){
+        //Using Rollno as parent
+        studentDbReference.child(user.uid).set({
+            Name:studentDetails[0],
+            Age:studentDetails[1],
+            RollNo:studentDetails[2],
+            Address:studentDetails[3],
+            Course:studentDetails[4],
+            Shift:studentDetails[5],
+            PhoneNo:studentDetails[6],
+            Semester:studentDetails[7],
+            DownloadUrl:DownloadUrl,
+        },(error)=>{
+            if(error) alert(error);
+            else window.location.href="studentHome.html";
+        });
+
+        let crs = studentDetails[4];
+        let sem = studentDetails[7];
+        let sec = studentDetails[5];
+        firebase.database().ref().child(`Filter/Student/${crs}/${sem}/${sec}/${user.uid}`).set({
+            Name:studentDetails[0],
+            Email:user.email,
+        },(error)=>{
+            if(error) alert(error);
+            else window.location.href="studentHome.html";
+        });
+    }
+
 
 });
 
