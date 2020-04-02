@@ -9,21 +9,21 @@ var uppy = Uppy.Core()
 uppy.on('complete', (result) => {
     let file;
     let storageRef;
-    let indexStore = 0;
-    let validFileType = true;
     result.successful.forEach((item,index)=>{
           file=item.data;
               
           switch(file.name.split('.').pop()){
-            case "mp4":
+            case "mp4":WrittenMaterialWrittenMaterial
             case "avi":
                 storageRef = firebase.storage().ref('Teacher/'+User+'/Videos/'+file.name);
+                uploadFiles(file,"Videos",storageRef,item);
             break;
               
             case 'jpg':
             case 'jpeg':
             case 'png':
                 storageRef = firebase.storage().ref('Teacher/'+User+'/Images/'+file.name);
+                uploadFiles(file,"Images",storageRef,item);
             break;
             
             case 'pptx':
@@ -31,29 +31,50 @@ uppy.on('complete', (result) => {
             case 'ppt':
             case 'odp':
                 storageRef = firebase.storage().ref('Teacher/'+User+'/WrittenMaterial/'+file.name);
+                uploadFiles(file,"WrittenMaterial",storageRef,item);
             break;
             
             default:
-                validFileType = false;
+                uppy.removeFile(item.id);
+            uppy.info(`Invalid format file only ppt, pdf, mp4, avi, jpg, jpeg, pptx, supported`);
             break;
           }
-          
-        if(validFileType===true){
-          let uploadTask=storageRef.put(file);
+
+      });
+})
+
+
+function uploadFiles(file,fileType,storageRef,item){
+  let uploadTask=storageRef.put(file);
+  let uploadedFiles = {};
+  let fileKey;
 
           uploadTask.on('state_changed', function(snapshot){
             var progress = (snapshot.bytesTransferred / snapshot.totalBytes) * 100;
             elem.style.width=progress+"%";
             if(progress===100){
                 uppy.removeFile(item.id);
-                uppy.info(`${indexStore} files are being uploaded to the server`);
+                uppy.info(`Files are being uploaded to the server`);
             }
+          },function(error) {
+            switch (error.code) {
+              case 'storage/unauthorized':
+                uppy.info('Unauthorized access','error',3000);
+                break;
+          
+              case 'storage/canceled':
+                uppy.info('Upload Cancelled','error',3000);
+                break;
+          
+              case 'storage/unknown':
+                uppy.info('Unknown error','error',3000);
+                break;
+            }
+          },function(){
+            uploadTask.snapshot.ref.getDownloadURL().then(function(downloadURL){
+              fileKey=firebase.database().ref().child('Teacher').push().key;
+              uploadedFiles[fileKey] = downloadURL;
+              firebase.database().ref(`Teacher/${User}/${fileType}`).update(uploadedFiles);
+            })
           });
-          indexStore++;
-        }
-        else{
-            uppy.removeFile(item.id);
-            uppy.info(`Invalid format file only ppt, pdf, mp4, avi, jpg, jpeg, pptx, supported`);
-        }
-      });
-})
+}
