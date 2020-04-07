@@ -4,13 +4,31 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Document</title>
-    <link rel="stylesheet" type="text/css" href="fileUpload.css">
+    <link rel="stylesheet" type="text/css" href="showUpload.css">
+    <link rel="stylesheet" type="text/css" href="navigation.css">
+    <script src="navigation.js"></script>
+
+    <script
+    src="https://code.jquery.com/jquery-3.4.1.min.js"
+    integrity="sha256-CSXorXvZcTkaix6Yvo6HppcZGetbYMGWSFlBw8HfCJo="
+    crossorigin="anonymous"></script>
+
+    <script>
+      $(function() {
+    $("#navigation").load("navigation.html");
+    });
+    </script>
+
     <script src="https://www.gstatic.com/firebasejs/7.8.2/firebase-app.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/7.8.2/firebase-auth.js"></script>
     <script src="https://www.gstatic.com/firebasejs/7.10.0/firebase-storage.js"></script>
-    <script type="text/javascript" src="fileUpload.js" defer></script>
+    <script type="text/javascript" src="showUpload.js" defer></script>
 </head>
 <body>
-    
+    <div id="navigation">
+
+    </div>
+
 <button class="collapsible">Videos</button>
 <div class="content">
 </div>

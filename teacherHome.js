@@ -1,7 +1,3 @@
-let ProfileName = document.querySelector('.profileName');
-let profilePic = document.querySelector('.dropbtn');
-let globalData;
-let User;
 uploadFileHtml();
 
 function uploadFileHtml(){
@@ -18,39 +14,6 @@ function uploadFileHtml(){
   mainContent.innerHTML = uploadHtmlString;
 }
 
-function showUploadedFiles(){
-  let mainContent=document.querySelector('.main-content');
-  mainContent.innerHTML = `<button class="collapsible">Videos</button>
-  <div class="content">
-  </div>
-  <button class="collapsible">Images</button>
-  <div class="content">
-  </div>
-  <button class="collapsible">Written Material</button>
-  <div class="content">
-  </div>`;
-
-  var showUploadScript = document.createElement('script');
-  showUploadScript.setAttribute('src','fileUpload.js');
-  document.head.appendChild(showUploadScript);
-}
-
-firebase.auth().onAuthStateChanged(function(user) {
-    if (user) {
-        var teacherDbReference = firebase.database().ref().child("Teacher");
-        User = firebase.auth().currentUser.uid;
-        
-        teacherDbReference.child(User).on('value',(datasnapshot)=>{
-            globalData=datasnapshot.val();
-            ProfileName.innerText = ProfileName.innerText.replace('${%TEACHERNAME%}$',globalData.Name);
-            if(globalData.DownloadUrl!=undefined) profilePic.src=globalData.DownloadUrl;
-          });
-
-    } else {
-      alert("No user is signed in");
-    }
-  });
-  
 let pillNavElement = document.querySelector('.pill-nav');
 pillNavElement.addEventListener('click',()=>{
   document.querySelector('.main-content').innerHTML='';

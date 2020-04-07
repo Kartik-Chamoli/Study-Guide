@@ -1,0 +1,79 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css"
+    />
+  </head>
+  <body>
+    <!-- Normal Navigation menu -->
+    <div class="profileHeader">
+      <div class="left-links">
+        <div class="dropdown">
+          <button class="dropbtn">
+            <i class="fa fa-file" aria-hidden="true"></i> Files
+          </button>
+          <div class="dropdown-content">
+            <a href="#">Upload Files</a>
+            <a href="showUpload.html">Show Uploaded Files</a>
+            <a href="#">Upload Lectures</a>
+            <a href="#">Show Uploaded Lectures</a>
+          </div>
+        </div>
+        <a href="www.google.com"
+          ><i class="fa fa-question-circle" aria-hidden="true"></i> Quiz
+        </a>
+      </div>
+      <div class="profilePic">
+        <img
+          class="profileImg"
+          src="assets/user.png"
+          width="96"
+          height="96"
+          alt="PFP"
+        />
+      </div>
+      <div class="right-links">
+        <a href="#"><i class="fa fa-user" aria-hidden="true"></i> Profile</a>
+        <a href="#"
+          ><i class="fa fa-comments" aria-hidden="true"></i> Message</a
+        >
+      </div>
+    </div>
+
+    <!-- Mobile Navigation Menu -->
+    <div class="topnav">
+      <a href="#home" class="active"
+        ><i class="fa fa-book" aria-hidden="true"></i> STUDY GUIDE</a
+      >
+      <div id="myLinks">
+        <div class="mobile-dropdown">
+          <button class="mobile-dropbtn" onclick="toggleHidden()">
+            <i class="fa fa-file" aria-hidden="true"></i> Files
+            <i class="fa fa-caret-down"></i>
+          </button>
+          <div class="mobile-content">
+            <a href="#">Upload Files</a>
+            <a href="showUpload.html">Show Uploaded Files</a>
+            <a href="#">Upload Lectures</a>
+            <a href="#">Show Uploaded Lectures</a>
+          </div>
+        </div>
+        <a href="#contact"
+          ><i class="fa fa-question-circle" aria-hidden="true"></i> Quiz</a
+        >
+
+        <a href="#about"
+          ><i class="fa fa-user" aria-hidden="true"></i> Profile</a
+        >
+        <a href="#message"
+          ><i class="fa fa-comments" aria-hidden="true"></i> Message</a
+        >
+      </div>
+      <a class="icon" onclick="myFunction()">
+        <i class="fa fa-bars"></i>
+      </a>
+    </div>
+  </body>
+</html>

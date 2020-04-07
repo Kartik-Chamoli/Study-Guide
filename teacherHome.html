@@ -4,13 +4,24 @@
     <meta charset="utf-8"/>
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Document</title>
+    
+    <script
+    src="https://code.jquery.com/jquery-3.4.1.min.js"
+    integrity="sha256-CSXorXvZcTkaix6Yvo6HppcZGetbYMGWSFlBw8HfCJo="
+    crossorigin="anonymous"></script>
+
+    <script>
+      $(function() {
+    $("#navigation").load("navigation.html");
+    });
+    </script>
+    
     <link rel="stylesheet" type="text/css" href="teacherHome.css">
+    <link rel="stylesheet" type="text/css" href="navigation.css">
     <link rel="stylesheet" type="text/css" href="fileUpload.css">
     <!-- Scripts for uppy -->
     <link href="https://transloadit.edgly.net/releases/uppy/v1.9.3/uppy.min.css" rel="stylesheet">
     <script src="https://transloadit.edgly.net/releases/uppy/v1.9.3/uppy.min.js"></script>
-
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
     
     <!-- Firebase Scripts -->
     <script src="https://www.gstatic.com/firebasejs/7.8.2/firebase-app.js"></script>
@@ -20,30 +31,14 @@
 
     <script src="firebaseconfig.js"></script>
     <script src="teacherHome.js" defer></script>
+    <script src="navigation.js"></script>
 </head>
 <body>
-    <div class="profileHeader">
-        <div class="profileName">
-            WELCOME ${%TEACHERNAME%}$
-        </div>
-        <div class="dropdown">
-            <img class="dropbtn" src="assets/user.png" width="96" height="96" alt="PFP">
-        </button>
-            <div class="dropdown-content">
-              <a href="#">Link 1</a>
-              <a href="#">Link 2</a>
-              <a id="logout" href="index.html">Logout</a>
-            </div>
-          </div>
+    <div id="navigation">
+
     </div>
 
-    <div class="pill-nav">
-        <a  href="#" class="active">Upload Files</a>
-        <a href="#">View Uploaded Files</a>
-        <a href="#">Contact</a>
-        <a href="#">About</a>
-      </div>
-
+    
       <div class="main-content">
 
       </div>

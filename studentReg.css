@@ -1,3 +1,8 @@
+*{
+	box-sizing: border-box;
+}
+
+
 .form-style-10 {
     width: 93%;
     padding: 30px;
@@ -118,3 +123,32 @@ box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.13);
 	margin-top: 10px;
 	text-align: right;
 }
+
+@media only screen and (max-width: 450px) {
+	body{
+		margin:0px;
+		padding: 0px;
+	}
+	.form-style-10 .inner-wrap {
+		 padding: 0px;
+		 background-color: white;
+		}
+		.form-style-10 {
+		padding: 0px;
+		width: 100%;
+		margin:0px;
+		}
+		.form-style-10 h1 {
+		 margin: 0px;
+		}
+		.form-style-10 .section span{
+			display: none;
+		}
+		.form-style-10 .section {
+			 margin-top: 5px;
+		}
+		.form-style-10 h1{
+			border-radius: 0px;
+		}
+  }
+

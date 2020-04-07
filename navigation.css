@@ -1,0 +1,183 @@
+* {
+  box-sizing: border-box;
+}
+
+html,
+body {
+  width: 100vw;
+  height: 100vh;
+}
+
+body {
+  font-family: "Segoe UI", Tahoma, Geneva, Verdana, sans-serif, Arial;
+  margin: 0;
+  margin-top: 140px;
+  font-size: 14px;
+  line-height: 1.5;
+  color: #24292e;
+  background-color: #fff;
+}
+
+#navigation {
+  position: fixed;
+  width: 100%;
+  z-index: 1;
+  top: 0;
+}
+
+.profileHeader {
+  display: flex;
+  height: 100px;
+  justify-content: space-evenly;
+  margin: 0px;
+  background-color: #4729ce;
+}
+
+.left-links,
+.right-links {
+  display: flex;
+  align-items: center;
+}
+
+.left-links a,
+.right-links a {
+  transition: font-size 0.2s;
+}
+.left-links a:hover,
+.right-links a:hover {
+  font-size: 1.8rem;
+}
+.profileHeader a {
+  text-decoration: none;
+  font-size: 1.4rem;
+  margin-right: 2rem;
+  color: white;
+}
+
+.profileImg {
+  border-radius: 50%;
+  border: 4px solid white;
+}
+
+.dropbtn {
+  color: white;
+  background-color: Transparent;
+  font-size: 16px;
+  border: none;
+  outline: none;
+  margin-right: 2rem;
+  font-size: 1.4rem;
+}
+
+.dropdown {
+  position: relative;
+  display: inline-block;
+}
+
+.dropdown-content {
+  visibility: hidden;
+  opacity: 0;
+  transition: visibility 0s, opacity 0.5s linear;
+  position: absolute;
+  background-color: #ffffff;
+  min-width: 160px;
+  box-shadow: 0px 8px 16px 0px rgba(0, 0, 0, 0.2);
+  z-index: 1;
+}
+
+.dropdown-content a {
+  color: #2926cc;
+  padding: 12px 16px;
+  font-weight: 500;
+  text-decoration: none;
+  display: block;
+  width: 100%;
+  font-size: 1rem;
+  border-bottom: 2px solid rgb(255, 255, 255);
+  transition: font-size 0.2s;
+}
+
+.dropdown-content a:hover {
+  font-size: 1.2rem;
+}
+
+.dropdown:hover .dropdown-content {
+  visibility: visible;
+  opacity: 1;
+}
+
+.topnav {
+  overflow: hidden;
+  background-color: #005bbb;
+  position: relative;
+}
+
+.topnav #myLinks {
+  display: none;
+}
+
+.topnav a {
+  color: white;
+  padding: 14px 16px;
+  text-decoration: none;
+  font-size: 17px;
+  display: block;
+  transition: 0.3s;
+}
+
+.topnav a.icon {
+  display: block;
+  position: absolute;
+  right: 0;
+  top: 0;
+}
+
+.topnav a:hover {
+  font-size: 20px;
+  font-weight: bold;
+}
+
+.active {
+  background-color: rgb(0, 108, 170);
+  font-weight: bold;
+}
+
+.mobile-dropbtn {
+  background-color: transparent;
+  border: none;
+  outline: none;
+  color: white;
+  padding: 14px 16px;
+  font-size: 17px;
+  transition: 0.3s;
+  text-align: left;
+  width: 100vw;
+}
+
+.mobile-dropbtn:hover {
+  font-size: 20px;
+  font-weight: bold;
+}
+.mobile-content {
+  position: relative;
+  display: none;
+  background-color: #008ecc;
+  width: 100vw;
+}
+
+@media only screen and (min-width: 700px) {
+  .topnav {
+    display: none;
+  }
+}
+
+@media only screen and (max-width: 700px) {
+  .left-links,
+  .right-links {
+    display: none;
+  }
+
+  body {
+    margin-top: 190px;
+  }
+}

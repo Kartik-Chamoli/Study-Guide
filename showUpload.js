@@ -1,7 +1,6 @@
 var coll = document.getElementsByClassName("collapsible");
 var i;
 var contentSelector = document.querySelectorAll(".content");
-var EVENT;
 for (i = 0; i < coll.length; i++) {
   coll[i].addEventListener("click", function(event){
     this.classList.toggle("active");
@@ -14,7 +13,14 @@ for (i = 0; i < coll.length; i++) {
   });
 }
 
-//Database js
+firebase.auth().onAuthStateChanged(function(user) {
+let User = firebase.auth().currentUser.uid;
+let materialTypeArr = ['Videos','Images','WrittenMaterial'];
+for(i=0;i<3;i++){
+    getFiles(i,materialTypeArr[i],User);
+}
+});
+
 function filesHTML(location,name,type){ 
             return `
             <a href="${location}">
@@ -26,27 +32,13 @@ function filesHTML(location,name,type){
             ` 
 }
 
-
+function getFiles(index,type,User){
 var storageRef = firebase.storage().ref('');
-storageRef.child(`Teacher/${User}/Videos/`).list().then(ele=>{
+storageRef.child(`Teacher/${User}/${type}/`).list().then(ele=>{
     ele.items.forEach(item=>{
         storageRef.child(item.location.path).getDownloadURL().then(result=>{
-            contentSelector[0].innerHTML+=filesHTML(result,item.location.path,'Videos');
+            contentSelector[index].innerHTML+=filesHTML(result,item.location.path,type);
         })
     })
 })
-storageRef.child(`Teacher/${User}/Images/`).list().then(ele=>{
-    ele.items.forEach(item=>{
-        
-        storageRef.child(item.location.path).getDownloadURL().then(result=>{
-            contentSelector[1].innerHTML+=filesHTML(result,item.location.path,'Images');
-        }) 
-    })
-})    
-storageRef.child(`Teacher/${User}/WrittenMaterial/`).list().then(ele=>{
-    ele.items.forEach(item=>{
-        storageRef.child(item.location.path).getDownloadURL().then(result=>{
-            contentSelector[2].innerHTML+=filesHTML(result,item.location.path,'Written');
-        }) 
-    })
-})    
+}
