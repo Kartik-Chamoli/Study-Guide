@@ -1,15 +1,15 @@
 /// KARTIK
 
 var firebaseConfig = {
-    apiKey: "AIzaSyCuEcmqZpri9N3vxSPMp1p7zACcIy_3ZC4",
-    authDomain: "college-learn.firebaseapp.com",
-    databaseURL: "https://college-learn.firebaseio.com",
-    projectId: "college-learn",
-    storageBucket: "college-learn.appspot.com",
-    messagingSenderId: "427931622347",
-    appId: "1:427931622347:web:beb067c9539691ea34744e",
-    measurementId: "G-C0ZYGNG27C"
-};
+    apiKey: "AIzaSyDUyVjEGei8_cVPj-TmEtt4I3A5xgq7AE4",
+    authDomain: "sample-project-53e6d.firebaseapp.com",
+    databaseURL: "https://sample-project-53e6d.firebaseio.com",
+    projectId: "sample-project-53e6d",
+    storageBucket: "sample-project-53e6d.appspot.com",
+    messagingSenderId: "927896945639",
+    appId: "1:927896945639:web:7447b15d8db6c28f14b342",
+    measurementId: "G-JHL5QMR4FF"
+  };
 
 
 
@@ -27,4 +27,6 @@ var firebaseConfig = {
 
 
 // Initialize Firebase
-firebase.initializeApp(firebaseConfig);
+if (!firebase.apps.length) {
+    firebase.initializeApp(firebaseConfig);
+ }

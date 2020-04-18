@@ -19,79 +19,37 @@ function getVal(){
     studentDetails[2]=document.querySelector('#rollNo').value;
     studentDetails[3]=document.querySelector('#address').value;
     studentDetails[4]=document.querySelector('#course').value;
-    studentDetails[5]=document.querySelector('#shift').value;
+    studentDetails[5]=document.querySelector('#section').value;
     studentDetails[6]=document.querySelector('#phoneNo').value;
     studentDetails[7]=document.querySelector('#semester').value;
     studentDetails[8]=DownloadUrl;
-
+    studentDetails[9]=document.querySelector('#college').value;
 }
 
 
 //STUDENTDB
-var studentDbReference = firebase.database().ref().child("Student");
+var studentDbReference = firebase.firestore().collection("Student");
 
-// let retBtn = document.querySelector('#retrieve');
+function setData(){
+    studentDbReference.doc(user.uid).set({
+        Name:studentDetails[0],
+        Age:studentDetails[1],
+        RollNo:studentDetails[2],
+        College:studentDetails[9],
+        Address:studentDetails[3],
+        Course:studentDetails[4],
+        Section:studentDetails[5],
+        PhoneNo:studentDetails[6],
+        Semester:studentDetails[7],
+        DownloadUrl:DownloadUrl,
+    }).then(()=>window.location.href="studentHome.html")
+    .catch((error)=>alert(error));
+}
 
 //Adding Data to database
 form.addEventListener('submit',(event)=>{
     event.preventDefault();
     user=firebase.auth().currentUser;
     getVal();
-
-    studentDbReference.child(`${user.uid}`).once('value').then(db=>{
-        db = db.val();
-        console.log(db);
-        console.log(`Filter/Student/${db.Course}/${db.Semester}/${db.Shift}/${user.uid}`);
-        var adaRef = firebase.database().ref(`Filter/Student/${db.Course}/${db.Semester}/${db.Shift}/${user.uid}`);
-        adaRef.remove()
-        .then(function() {
-            console.log("Remove succeeded.");
-            update();
-        })
-        .catch(function(error) {
-            console.log("Remove failed: " + error.message);
-            update();
-        });
-    })
-    
-    function update(){
-        //Using Rollno as parent
-        studentDbReference.child(user.uid).set({
-            Name:studentDetails[0],
-            Age:studentDetails[1],
-            RollNo:studentDetails[2],
-            Address:studentDetails[3],
-            Course:studentDetails[4],
-            Shift:studentDetails[5],
-            PhoneNo:studentDetails[6],
-            Semester:studentDetails[7],
-            DownloadUrl:DownloadUrl,
-        },(error)=>{
-            if(error) alert(error);
-            else window.location.href="studentHome.html";
-        });
-
-        let crs = studentDetails[4];
-        let sem = studentDetails[7];
-        let sec = studentDetails[5];
-        firebase.database().ref().child(`Filter/Student/${crs}/${sem}/${sec}/${user.uid}`).set({
-            Name:studentDetails[0],
-            Email:user.email,
-        },(error)=>{
-            if(error) alert(error);
-            else window.location.href="studentHome.html";
-        });
-    }
-
-
+    setData();
 });
-
-
-// //Retrieving Data from database
-// retBtn.addEventListener('click',()=>{
-//     studentDetails[2] = document.querySelector('#RollNo').value;
-//     studentDbReference.child(studentDetails[2]).on('value',(datasnapshot)=>{
-//         document.querySelector('#name').value=datasnapshot.val().Name;
-//         document.querySelector('#Age').value=datasnapshot.val().Age;
-//     })
-// })

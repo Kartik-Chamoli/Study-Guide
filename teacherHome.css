@@ -4,6 +4,10 @@
   }
 
   /* CSS FOR UPLOAD SECTION */
+  .uppy-Root{
+    z-index: 1;
+  }
+
   .uppy-Dashboard-inner {   
     margin-left: 20%;
     margin-top: 2%;

@@ -2,16 +2,16 @@ let User;
 
 firebase.auth().onAuthStateChanged(function(user) {
   let teacherData;
-  let profilePic = document.querySelector('.profileImg');
 
   if (user) {
-      var teacherDbReference = firebase.database().ref().child("Teacher");
+      let profilePic = document.querySelector('.profileImg');
+      var teacherDbReference = firebase.firestore().collection("Teacher");
       User = firebase.auth().currentUser.uid;
       
-      teacherDbReference.child(User).on('value',(datasnapshot)=>{
-          teacherData=datasnapshot.val();
+      teacherDbReference.doc(User).get().then((doc=>{
+        teacherData = doc.data();
           if(teacherData.DownloadUrl!=undefined) profilePic.src=teacherData.DownloadUrl;
-        });
+      }));
 
   } else {
     alert("No user is signed in");

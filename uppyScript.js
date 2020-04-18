@@ -43,10 +43,10 @@ uppy.on('complete', (result) => {
       });
 })
 
+let uploadedFiles = {};
 
 function uploadFiles(file,fileType,storageRef,item){
   let uploadTask=storageRef.put(file);
-  let uploadedFiles = {};
   let fileKey;
 
           uploadTask.on('state_changed', function(snapshot){
@@ -72,9 +72,11 @@ function uploadFiles(file,fileType,storageRef,item){
             }
           },function(){
             uploadTask.snapshot.ref.getDownloadURL().then(function(downloadURL){
-              fileKey=firebase.database().ref().child('Teacher').push().key;
+              fileKey=firebase.firestore().collection('Teacher').doc().id;
               uploadedFiles[fileKey] = downloadURL;
-              firebase.database().ref(`Teacher/${User}/${fileType}`).update(uploadedFiles);
+              let updateObj = {};
+              updateObj[fileType] = uploadedFiles;
+              firebase.firestore().collection('Teacher').doc(User).update(updateObj);
             })
           });
 }

@@ -21,8 +21,9 @@ body {
 #navigation {
   position: fixed;
   width: 100%;
-  z-index: 1;
+  z-index: 20;
   top: 0;
+  height: 100px;
 }
 
 .profileHeader {

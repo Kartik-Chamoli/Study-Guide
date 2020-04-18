@@ -5,11 +5,11 @@ let User;
 
 firebase.auth().onAuthStateChanged(function(user) {
   if (user) {
-      var studentDbReference = firebase.database().ref().child("Student");
+      var studentDbReference = firebase.firestore().collection("Student");
       User = firebase.auth().currentUser.uid;
       
-      studentDbReference.child(User).on('value',(datasnapshot)=>{
-          globalData=datasnapshot.val();
+      studentDbReference.doc(User).get().then((doc)=>{
+          globalData=doc.data();
           ProfileName.innerText = ProfileName.innerText.replace('${%STUDENTNAME%}$',globalData.Name);
           if(globalData.DownloadUrl!=undefined) profilePic.src=globalData.DownloadUrl;
         });
