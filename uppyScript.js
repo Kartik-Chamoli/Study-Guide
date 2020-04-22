@@ -13,7 +13,7 @@ uppy.on('complete', (result) => {
           file=item.data;
               
           switch(file.name.split('.').pop()){
-            case "mp4":WrittenMaterialWrittenMaterial
+            case "mp4":
             case "avi":
                 storageRef = firebase.storage().ref('Teacher/'+User+'/Videos/'+file.name);
                 uploadFiles(file,"Videos",storageRef,item);
@@ -72,11 +72,21 @@ function uploadFiles(file,fileType,storageRef,item){
             }
           },function(){
             uploadTask.snapshot.ref.getDownloadURL().then(function(downloadURL){
-              fileKey=firebase.firestore().collection('Teacher').doc().id;
+              fileKey=file.name;
               uploadedFiles[fileKey] = downloadURL;
               let updateObj = {};
               updateObj[fileType] = uploadedFiles;
               firebase.firestore().collection('Teacher').doc(User).update(updateObj);
+
+              let userId = firebase.auth().currentUser.uid;
+              firebase.firestore().doc(`Teacher/${userId}`).get().then(e=>{
+                let teacherdata=e.data();
+                let clg = teacherdata.College;
+                let crs = teacherdata.Course;
+                let sem = document.getElementById('semester-select').value;
+                let sec = document.getElementById('section-select').value;
+                firebase.firestore().doc(`${clg}/${crs}/${sem}/${sec}`).set(updateObj,{merge:true});
+              });
             })
           });
 }

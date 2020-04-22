@@ -30,3 +30,15 @@ document.querySelectorAll('.pill-nav a').forEach(item=>{
 })
 event.explicitOriginalTarget.classList.toggle('active');
 })
+
+
+function test() {
+  let studentDbReference = firebase.firestore().collection("Student");
+  studentDbReference.doc(User).get().then(doc=>{
+    stuData = doc.data();
+    firebase.firestore().doc(`${stuData.College}/${stuData.Course}/${stuData.Semester}/${stuData.Section}`).get().then(material=>{
+      matData=material.data();
+      console.log(matData);
+    })
+  })
+}

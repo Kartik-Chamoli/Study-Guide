@@ -2,6 +2,24 @@ uploadFileHtml();
 
 function uploadFileHtml(){
   let uploadHtmlString = `<div id="drag-drop-area"></div>
+  <div> 
+          <label for="semester-select">Choose a Semester:</label>
+          <select id="semester-select">
+            <option value="1">1</option>
+            <option value="2">2</option>
+            <option value="3">3</option>
+            <option value="4">4</option>
+            <option value="5">5</option>
+            <option value="6">6</option>
+          </select>
+          <label for="section-select">Choose a Section:</label>
+
+          <select id="section-select">
+            <option value="A">A</option>
+            <option value="B">B</option>
+            <option value="E">E</option>
+          </select> 
+        </div>
   <div id="myProgress">
       <div id="myBar"></div>
     </div>   
