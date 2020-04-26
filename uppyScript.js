@@ -1,4 +1,5 @@
 var elem = document.getElementById("myBar");
+let clg,crs;
 
 var uppy = Uppy.Core()
   .use(Uppy.Dashboard, {
@@ -43,7 +44,13 @@ uppy.on('complete', (result) => {
       });
 })
 
-let uploadedFiles = {};
+firebase.auth().onAuthStateChanged(function(user) {
+firebase.firestore().doc(`Teacher/${user.uid}`).get().then(e=>{
+  let teacherdata=e.data();
+  clg = teacherdata.College;
+  crs = teacherdata.Course;
+})
+});
 
 function uploadFiles(file,fileType,storageRef,item){
   let uploadTask=storageRef.put(file);
@@ -72,21 +79,17 @@ function uploadFiles(file,fileType,storageRef,item){
             }
           },function(){
             uploadTask.snapshot.ref.getDownloadURL().then(function(downloadURL){
+             let uploadedFiles = {};
               fileKey=file.name;
               uploadedFiles[fileKey] = downloadURL;
               let updateObj = {};
               updateObj[fileType] = uploadedFiles;
-              firebase.firestore().collection('Teacher').doc(User).update(updateObj);
+              console.log(fileType);
+              // firebase.firestore().collection('Teacher').doc(User).update(updateObj);
 
-              let userId = firebase.auth().currentUser.uid;
-              firebase.firestore().doc(`Teacher/${userId}`).get().then(e=>{
-                let teacherdata=e.data();
-                let clg = teacherdata.College;
-                let crs = teacherdata.Course;
-                let sem = document.getElementById('semester-select').value;
-                let sec = document.getElementById('section-select').value;
-                firebase.firestore().doc(`${clg}/${crs}/${sem}/${sec}`).set(updateObj,{merge:true});
+            
+                let selTextEle = document.querySelectorAll('.selText');
+                firebase.firestore().doc(`College/${clg}/Course/${crs}/Semester/${selTextEle[0].innerHTML}/Subject/${selTextEle[2].innerHTML}/Section/${selTextEle[1].innerHTML}`).set(updateObj,{merge:true});
               });
             })
-          });
-}
+          }

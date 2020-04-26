@@ -1,0 +1,100 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+
+    <script
+    src="https://code.jquery.com/jquery-3.4.1.min.js"
+    integrity="sha256-CSXorXvZcTkaix6Yvo6HppcZGetbYMGWSFlBw8HfCJo="
+    crossorigin="anonymous"></script>
+
+    <script>
+      $(function() {
+    $("#navigation").load("navigation.html");
+    });
+    </script>
+    
+     <!-- Scripts for uppy -->
+     <link href="https://transloadit.edgly.net/releases/uppy/v1.9.3/uppy.min.css" rel="stylesheet">
+     <script src="https://transloadit.edgly.net/releases/uppy/v1.9.3/uppy.min.js"></script>
+
+     <link rel="stylesheet" type="text/css" href="navigation.css">
+     <link rel="stylesheet" type="text/css" href="uploadFile.css">
+      <link rel="stylesheet" type="text/css" href="select.css">
+     <!--Firebase scripts -->
+    <script src="https://www.gstatic.com/firebasejs/7.8.2/firebase-app.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/7.8.2/firebase-auth.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/7.13.2/firebase-firestore.js"></script>    
+    <script src="https://www.gstatic.com/firebasejs/7.10.0/firebase-storage.js"></script>
+
+    <script src="firebaseconfig.js"></script>
+    <script src="navigation.js"></script>
+</head>
+<body>
+    <div id="navigation">
+
+    </div>
+
+    <div class="main-content">
+
+      <!-- CUSTOM SELECT -->
+      <div class="label">
+        <span>SEMESTER</span>
+        <span>SECTION</span>
+      </div>
+      <div class="selectContainer">
+        <div class="custom-select-wrapper">
+          <div class="custom-select">
+              <div class="custom-select-trigger"><span class="selText">1</span>
+                  <div class="arrow"></div>
+              </div>
+              <div class="custom-options">
+                  <span class="custom-option selected" data-value="1">1</span>
+                  <span class="custom-option" data-value="2">2</span>
+                  <span class="custom-option" data-value="3">3</span>
+                  <span class="custom-option" data-value="4">4</span>
+                  <span class="custom-option" data-value="6">5</span>
+              </div>
+          </div>
+      </div>
+      
+      
+      <div class="custom-select-wrapper">
+          <div class="custom-select">
+              <div class="custom-select-trigger"><span class="selText">A</span>
+                  <div class="arrow"></div>
+              </div>
+              <div class="custom-options">
+                  <span class="custom-option selected" data-value="A">A</span>
+                  <span class="custom-option" data-value="B">B</span>
+                  <span class="custom-option" data-value="E">E</span>
+              </div>
+          </div>
+      </div>
+
+      </div>
+      
+      <div class="selectContainer" style="margin: 10px 0px;">
+            <div class="custom-select-wrapper" style="width: 100%; max-width: 750px;">
+        <div class="custom-select">
+            <div class="custom-select-trigger"><span class="selText">Subject</span>
+                <div class="arrow"></div>
+            </div>
+            <div class="custom-options" style="z-index:2">
+                
+            </div>
+        </div>
+    </div>
+  </div>
+<!-- CUSTOM SELECT -->
+        <div id="drag-drop-area"></div>
+        <div id="myProgress">
+            <div id="myBar"></div>
+          </div>
+          
+    <script src="uploadFile.js"></script>     
+    <script src="uppyScript.js"></script>
+</body>
+</html>

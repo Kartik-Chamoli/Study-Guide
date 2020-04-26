@@ -1,0 +1,47 @@
+
+  /* CSS FOR UPLOAD SECTION */
+  .uppy-Root{
+    z-index: 1;
+  }
+
+   .uppy-Dashboard-inner { 
+    box-sizing: border-box;  
+    margin-left: auto;
+    margin-right: auto;
+    margin-top: 2%;
+    border:2px solid black;
+    background-color: #aee1f9;
+    background-image: linear-gradient(315deg, #aee1f9 0%, #f6ebe6 74%);
+    } 
+    .uppy-size--md .uppy-DashboardAddFiles{
+        border:none;
+    }
+    
+    .uppy-DashboardContent-bar{
+    background-color: lightgoldenrodyellow;
+    }
+    
+    .uppy-StatusBar.is-waiting .uppy-StatusBar-actions{
+        background-color: lightgoldenrodyellow;
+    }
+    span{
+        color:black;
+    }
+    #myProgress {
+        margin-left: auto;
+        margin-right: auto;
+        width: 750px;
+        background-color: rgb(255, 255, 255);
+      }
+      
+      #myBar {
+        width: 0%;
+        height: 5px;
+        background-color: green;
+      }
+
+      @media only screen and (max-width: 770px) {
+       #myProgress{
+          width: 100%;
+        }
+      }
