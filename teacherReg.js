@@ -6,6 +6,7 @@ let DownloadUrl;
 
 imageSelect.addEventListener('change',()=>{
 let storageRef = firebase.storage().ref('Teacher/'+firebase.auth().currentUser.uid+'/ProfilePicture/'+imageSelect.files[0].name);
+user = firebase.auth().currentUser.uid;
 storageRef.put(imageSelect.files[0]).then((snapshot=>{
 return snapshot.ref.getDownloadURL();
 })).then(downloadUrl=>{
@@ -20,7 +21,6 @@ function getVal(){
     teacherDetails[3]=document.querySelector('#subject').value;
     teacherDetails[4]=document.querySelector('#course').value;
     teacherDetails[5]=document.querySelector('#teachExp').value;
-    teacherDetails[6]=DownloadUrl;
 }
 
 
@@ -35,7 +35,7 @@ function setData(){
         Subject:teacherDetails[3],
         Course:teacherDetails[4],
         teachExp:teacherDetails[5],
-        DownloadUrl:teacherDetails[6],
+        DownloadUrl:DownloadUrl,
     }).then(()=>window.location.href="teacherHome.html")
     .catch((error)=>alert(error));
 }

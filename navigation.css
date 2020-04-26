@@ -56,7 +56,7 @@ body {
 
 .profileImg {
   border-radius: 50%;
-  border: 4px solid white;
+  margin-top:2px;
 }
 
 .dropbtn {
@@ -165,13 +165,13 @@ body {
   width: 100vw;
 }
 
-@media only screen and (min-width: 700px) {
+@media only screen and (min-width: 873px) {
   .topnav {
     display: none;
   }
 }
 
-@media only screen and (max-width: 700px) {
+@media only screen and (max-width: 873px) {
   .left-links,
   .right-links {
     display: none;
