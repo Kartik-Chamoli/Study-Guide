@@ -6,7 +6,7 @@
     <title>Document</title>
     <link rel="stylesheet" type="text/css" href="showUpload.css">
     <link rel="stylesheet" type="text/css" href="navigation.css">
-    <script src="navigation.js"></script>
+    <link rel="stylesheet" type="text/css" href="select.css">
 
     <script
     src="https://code.jquery.com/jquery-3.4.1.min.js"
@@ -23,24 +23,81 @@
     <script src="https://www.gstatic.com/firebasejs/7.8.2/firebase-auth.js"></script>
     <script src="https://www.gstatic.com/firebasejs/7.10.0/firebase-storage.js"></script>
     <script src="https://www.gstatic.com/firebasejs/7.13.2/firebase-firestore.js"></script>    
-    <script type="text/javascript" src="showUpload.js" defer></script>
 
     <script src="firebaseconfig.js"></script>
+    <script src="navigation.js"></script>
 </head>
 <body>
     <div id="navigation">
 
     </div>
 
-<button class="collapsible">Videos</button>
-<div class="content">
+    <!-- CUSTOM SELECT -->
+    <div class="label">
+      <span>SEMESTER</span>
+      <span>SECTION</span>
+    </div>
+    <div class="selectContainer">
+      <div class="custom-select-wrapper">
+        <div class="custom-select">
+            <div class="custom-select-trigger"><span class="selText">1</span>
+                <div class="arrow"></div>
+            </div>
+            <div class="custom-options">
+                <span class="custom-option selected" data-value="1">1</span>
+                <span class="custom-option" data-value="2">2</span>
+                <span class="custom-option" data-value="3">3</span>
+                <span class="custom-option" data-value="4">4</span>
+                <span class="custom-option" data-value="6">5</span>
+            </div>
+        </div>
+    </div>
+    
+    
+    <div class="custom-select-wrapper">
+        <div class="custom-select">
+            <div class="custom-select-trigger"><span class="selText">A</span>
+                <div class="arrow"></div>
+            </div>
+            <div class="custom-options">
+                <span class="custom-option selected" data-value="A">A</span>
+                <span class="custom-option" data-value="B">B</span>
+                <span class="custom-option" data-value="E">E</span>
+            </div>
+        </div>
+    </div>
+
+    </div>
+    
+    <div class="selectContainer" style="margin: 10px 0px;">
+          <div class="custom-select-wrapper" style="width: 100%; max-width: 750px;">
+      <div class="custom-select">
+          <div class="custom-select-trigger"><span class="selText">Subject</span>
+              <div class="arrow"></div>
+          </div>
+          <div class="custom-options" style="z-index:2">
+              
+          </div>
+      </div>
+  </div>
+
+  <button class="refreshBtn"><i style="font-size:28px;color: green" class="fa fa-refresh" aria-hidden="true"></i></button>
 </div>
-<button class="collapsible">Images</button>
-<div class="content">
+
+<!-- CUSTOM SELECT -->
+
+<div class="itemMenu">
+    <a class="links" style="color:blue;" id="Images"><i class="fa fa-picture-o" aria-hidden="true"></i> Images</a>
+    <a class="links" style="color: red;" id="Videos"><i class="fa fa-video-camera" aria-hidden="true"></i> Videos</a>
+    <a class="links" style="color: green;" id="WrittenMaterial"><i class="fa fa-file-text-o" aria-hidden="true"></i> WrittenMaterial</a>
+    <a class="links" style="color: #52208e;" id="Lectures"><i class="fa fa-pencil-square-o" aria-hidden="true"></i> Lectures</a>
 </div>
-<button class="collapsible">Written Material</button>
-<div class="content">
-</div>
+
+<div class="mainContent"></div>
+<div class="navNumbers"></div>
+
+<script src="uploadFile.js"></script>
+<script src="showUpload.js"></script>
 
 </body>
 </html>

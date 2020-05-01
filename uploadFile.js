@@ -1,6 +1,14 @@
 let customWrapper = document.querySelectorAll('.custom-select-wrapper');
 let selectedText = customWrapper[0].querySelector('.selText');
 let option = customWrapper[0].querySelectorAll('.custom-option');
+let teacherdata,type;
+let hashType = window.location.hash.substr(1).split('=')[1];
+if(hashType==="teacher"||window.location.hash.substr(1).split('&')[0].split('=')[1]=="teacher"){
+    type="Teacher";
+}
+else{
+    type="Student"
+}
 
 customWrapper[0].addEventListener('click', function() {
     customWrapper[0].querySelector('.custom-select').classList.toggle('open');
@@ -36,8 +44,8 @@ customWrapper[2].querySelector('.custom-options').addEventListener('click',(even
 
 function fillSelect(semester){
 firebase.auth().onAuthStateChanged(function(user) {
-              firebase.firestore().doc(`Teacher/${user.uid}`).get().then(e=>{
-                let teacherdata=e.data();
+              firebase.firestore().doc(`${type}/${user.uid}`).get().then(e=>{
+                teacherdata=e.data();
                 firebase.firestore().collection("CourseList").doc(teacherdata.Course).get().then(doc=>{
                     createOptions(doc.data()[semester]);
                 });

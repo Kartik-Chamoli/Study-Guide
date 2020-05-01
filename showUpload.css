@@ -1,45 +1,40 @@
-.collapsible {
-  background-color: #a9baff;
-  color: black;
+.itemMenu{
+  display: flex;
+  justify-content: space-evenly;
+  margin-top:30px;
+}
+
+.itemMenu a{
+  font-size: 18px;
+  text-align: center;
+}
+
+.selected{
+  border-bottom: 3px solid;
+}
+
+.itemMenu a:hover{
+  border-bottom:3px solid ;
   cursor: pointer;
-  padding: 18px;
-  width: 100%;
+}
+
+.mainContent{
+  display: flex;
+  margin-top: 10px;
+  flex-wrap: wrap;
+  justify-content: space-around;
+}
+
+.refreshBtn{
   border: none;
-  text-align: center;
-  outline: none;
-  font-size: 20px;
-  font-weight: bolder;
+  background-color:white;
+  cursor: pointer;
+  transition: all 0.5s;
 }
 
-.active, .collapsible:hover {
-  background-color: #3754c8;
+.refreshBtn:hover{
+  transform: rotate(360deg);
 }
-
-.collapsible:after {
-  content: '\002B';
-  color: black;
-  font-weight: bold;
-  float: right;
-  margin-left: 5px;
-  font-size:20px;
-}
-
-.active:after {
-  content: "\2212";
-}
-
-.content {
-  border-bottom:2px solid #1400ff;
-  text-align: center;
-  padding: 0 18px;
-  max-height: 0px;
-  overflow:hidden;
-  transition: max-height 0.2s ease-out;
-  background-color: #f1f1f1;
-}
-
-
-/* Figure CSS */
 
 a, figure {
   display: inline-block;
@@ -67,4 +62,36 @@ img {
   -webkit-transition: -webkit-transform 0.2s;
   -moz-transition: -moz-transform 0.2s;
   -o-transition: -o-transform 0.2s;
+}
+
+.videoPlayer{
+  max-width: 600px;
+  height: 400px;
+}
+
+.navNumbers{
+  margin:20px 0px;
+  display: flex;
+  justify-content: center;
+}
+
+.navNumbers .btn{
+  border:none;
+  background-color: transparent;
+  font-size: 18px;
+}
+
+.navNumbers .btn:hover{
+  border:2px solid rgb(71, 42, 233);
+}
+
+.navNumbers .btnSelect{
+  border:2px solid rgb(71, 42, 233);
+} 
+
+@media only screen and (max-width: 600px) {
+.videoPlayer{
+  width: 100%;
+  height: 65%;
+}
 }

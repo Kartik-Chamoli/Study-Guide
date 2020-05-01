@@ -14,14 +14,16 @@ firebase.auth().onAuthStateChanged(function(user) {
           if(teacherData.DownloadUrl!=undefined) profilePic.src=teacherData.DownloadUrl;
       }));
 
-     signOutEle = document.querySelector('.signOut');
-     signOutEle.addEventListener('click',(event)=>{
-      firebase.auth().signOut().then(function() {
-        window.location.href="index.html"
-      }, function(error) {
-        alert(error);
-      });
-    })
+     signOutEle = document.querySelectorAll('.signOut');
+     signOutEle.forEach(item=>{
+      item.addEventListener('click',(event)=>{
+        firebase.auth().signOut().then(function() {
+          window.location.href="index.html"
+        }, function(error) {
+          alert(error);
+        });
+      })
+     })
   } else {
     alert("No user is signed in");
   }

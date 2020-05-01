@@ -80,16 +80,15 @@ function uploadFiles(file,fileType,storageRef,item){
           },function(){
             uploadTask.snapshot.ref.getDownloadURL().then(function(downloadURL){
              let uploadedFiles = {};
-              fileKey=file.name;
-              uploadedFiles[fileKey] = downloadURL;
-              let updateObj = {};
-              updateObj[fileType] = uploadedFiles;
-              console.log(fileType);
-              // firebase.firestore().collection('Teacher').doc(User).update(updateObj);
-
-            
+              uploadedFiles.name=file.name;
+              uploadedFiles.url=downloadURL;
+              
                 let selTextEle = document.querySelectorAll('.selText');
-                firebase.firestore().doc(`College/${clg}/Course/${crs}/Semester/${selTextEle[0].innerHTML}/Subject/${selTextEle[2].innerHTML}/Section/${selTextEle[1].innerHTML}`).set(updateObj,{merge:true});
+                firebase.firestore().doc(`College/${clg}/Course/${crs}/Semester/${selTextEle[0].innerHTML}/Subject/${selTextEle[2].innerHTML}/Section/${selTextEle[1].innerHTML}`).update({
+                  [fileType] : firebase.firestore.FieldValue.arrayUnion(uploadedFiles)
+                });
               });
             })
           }
+
+
