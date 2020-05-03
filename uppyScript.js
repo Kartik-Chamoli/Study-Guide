@@ -82,11 +82,10 @@ function uploadFiles(file,fileType,storageRef,item){
              let uploadedFiles = {};
               uploadedFiles.name=file.name;
               uploadedFiles.url=downloadURL;
-              
-                let selTextEle = document.querySelectorAll('.selText');
-                firebase.firestore().doc(`College/${clg}/Course/${crs}/Semester/${selTextEle[0].innerHTML}/Subject/${selTextEle[2].innerHTML}/Section/${selTextEle[1].innerHTML}`).update({
+              let selTextEle = document.querySelectorAll('.selText');
+              firebase.firestore().doc(`College/${clg}/Course/${crs}/Semester/${selTextEle[0].innerHTML}/Subject/${selTextEle[2].innerHTML}/Section/${selTextEle[1].innerHTML}`).set({
                   [fileType] : firebase.firestore.FieldValue.arrayUnion(uploadedFiles)
-                });
+                }, {merge:true});
               });
             })
           }

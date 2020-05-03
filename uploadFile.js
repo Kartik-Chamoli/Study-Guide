@@ -55,12 +55,13 @@ firebase.auth().onAuthStateChanged(function(user) {
 
  function createOptions(options){
     let optEle = document.querySelectorAll('.custom-options')[2];
+    optEle.innerHTML='';
     document.querySelectorAll('.selText')[2].innerHTML = options[0];
     options.forEach((item,index)=>{
         if(index==0)
-        optEle.insertAdjacentHTML('beforeend', `<span class='custom-option selected' data-value=${item}>${item}</span>`);
+        optEle.insertAdjacentHTML('beforeend', `<span class='custom-option selected' data-value="${item}">${item}</span>`);
         else
-        optEle.insertAdjacentHTML('beforeend' ,`<span class='custom-option' data-value=${item}>${item}</span>`);
+        optEle.insertAdjacentHTML('beforeend' ,`<span class='custom-option' data-value="${item}">${item}</span>`);
     })
  }   
 
