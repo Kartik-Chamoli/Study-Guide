@@ -30,7 +30,7 @@ document.querySelector('.refreshBtn').addEventListener('click',()=>{
 })
 
 function getFiles(){
-  let docString=`/College/${teacherdata.College}/Course/${teacherdata.Course}/Semester/${selTextEle[0].innerHTML}/Subject/${selTextEle[2].innerHTML}/Section/${selTextEle[1].innerHTML}`;
+  let docString=`/College/${userData.College}/Course/${userData.Course}/Semester/${selTextEle[0].innerHTML}/Subject/${selTextEle[2].innerHTML}/Section/${selTextEle[1].innerHTML}`;
   var docRef =firebase.firestore().doc(docString);
   
   docRef.get().then(function(doc) {

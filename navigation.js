@@ -1,18 +1,41 @@
 let User;
 let signOutEle;
+let isTeacher;
 
 firebase.auth().onAuthStateChanged(function(user) {
-  let teacherData;
+  let userData;
 
   if (user) {
       let profilePic = document.querySelector('.profileImg');
-      var teacherDbReference = firebase.firestore().collection("Teacher");
       User = firebase.auth().currentUser.uid;
       
-      teacherDbReference.doc(User).get().then((doc=>{
-        teacherData = doc.data();
-          if(teacherData.DownloadUrl!=undefined) profilePic.src=teacherData.DownloadUrl;
-      }));
+      firebase.firestore().doc(`Student/${User}`).get().then(e=>{
+        if(e.data()===undefined) 
+        {
+          isTeacher=true;
+        } 
+        else
+        {
+          isTeacher=false;
+        }
+      }).then(e=>{
+        if (isTeacher) {
+          var dbReference = firebase.firestore().collection("Teacher");
+          let arr = Array.from(document.getElementsByClassName('show-upload'));
+          arr[0].setAttribute('href', 'showUpload.html#data=teacher');
+          arr[2].setAttribute('href', 'showUpload.html#data=teacher');
+        } else {
+          var dbReference = firebase.firestore().collection("Student");
+          let arr = Array.from(document.getElementsByClassName('show-upload'));
+          arr[0].setAttribute('href', 'showUpload.html#data=student');
+          arr[2].setAttribute('href', 'showUpload.html#data=student');
+        }
+        dbReference.doc(User).get().then((doc=>{
+          userData = doc.data();
+            if(userData.DownloadUrl!=undefined) profilePic.src=userData.DownloadUrl;
+        }));
+
+      });
 
      signOutEle = document.querySelectorAll('.signOut');
      signOutEle.forEach(item=>{
@@ -45,4 +68,7 @@ function myFunction() {
   else dropContent.style.display = "";
   }
 
-  
+  /// IMP
+  /**firebase.firestore().doc(`Student/${c}`).get().then(e=>{
+if(e.data()!=undefined) {console.log(true)} else {console.log(false);}
+}) */
