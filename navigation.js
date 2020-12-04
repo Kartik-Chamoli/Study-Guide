@@ -20,15 +20,25 @@ firebase.auth().onAuthStateChanged(function(user) {
         }
       }).then(e=>{
         if (isTeacher) {
+          Array.from(document.getElementsByClassName('update-profile')).forEach(e=>{
+            e.setAttribute('href','teacherReg.html');
+          });
           var dbReference = firebase.firestore().collection("Teacher");
           let arr = Array.from(document.getElementsByClassName('show-upload'));
           arr[0].setAttribute('href', 'showUpload.html#data=teacher');
           arr[2].setAttribute('href', 'showUpload.html#data=teacher');
         } else {
+          Array.from(document.getElementsByClassName('update-profile')).forEach(e=>{
+            e.setAttribute('href','studentReg.html');
+          });
           var dbReference = firebase.firestore().collection("Student");
           let arr = Array.from(document.getElementsByClassName('show-upload'));
           arr[0].setAttribute('href', 'showUpload.html#data=student');
           arr[2].setAttribute('href', 'showUpload.html#data=student');
+          arr = Array.from(document.getElementsByClassName('upload'));
+          arr.forEach(e=>{
+            e.outerHTML='';
+          })
         }
         dbReference.doc(User).get().then((doc=>{
           userData = doc.data();
