@@ -1,4 +1,33 @@
 //Check if user is logged in or not
+window.recaptchaVerifier = new firebase.auth.RecaptchaVerifier('recaptcha', {
+  'callback': (response) => {
+    // reCAPTCHA solved, allow signInWithPhoneNumber.
+    // ...
+    regBtnStu.addEventListener('click',()=>{
+      register('student');
+    })
+    
+    regBtnTeach.addEventListener('click',()=>{
+      register('teacher');
+    })
+    
+    loginBtnStu.addEventListener('click',()=>{
+       login('student');
+    })
+    
+    loginBtnTeach.addEventListener('click',()=>{
+      login('teacher');
+    })
+    
+  },
+  'expired-callback': () => {
+    // Response expired. Ask user to solve reCAPTCHA again.
+    // ...
+    alert("You were unable to solve the recaptcha try again");
+  }
+})
+window.recaptchaVerifier.render()
+
 let user = firebase.auth().currentUser;
 
 let regBtnStu = document.querySelector('#registerBtnStu');
@@ -37,21 +66,6 @@ function login(role){
     });
 }
 
-regBtnStu.addEventListener('click',()=>{
-  register('student');
-})
-
-regBtnTeach.addEventListener('click',()=>{
-  register('teacher');
-})
-
-loginBtnStu.addEventListener('click',()=>{
-   login('student');
-})
-
-loginBtnTeach.addEventListener('click',()=>{
-  login('teacher');
-})
 
 // logoutbtn.addEventListener('click',()=>{
 //     firebase.auth().signOut();
@@ -61,10 +75,13 @@ firebase.auth().onAuthStateChanged(function(user) {
     if (user) {
         if(user.emaildVerified){
             console.log('Verified');
+            alert("Email Verified");
         }
         else{
             console.log('EMAIL not verified');
-            // user.sendEmailVerification();  IMPORTANT FOR SENDING VERIFICATION
+            alert("Email not verified check your email id for the verification mail");
+            setTimeout(20000);  
+            user.sendEmailVerification();  
         }   //     console.log('User is logged in');
     //   // User is signed in.
     //   var displayName = user.displayName;

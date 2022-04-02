@@ -1,0 +1,72 @@
+
+header {
+    text-align: center;
+}
+
+#messages{
+    padding-bottom: 30%;
+}
+
+li {
+    list-style-type: none;
+    margin-bottom: 10px;
+    background-color: #0161c1;
+    padding: 15px;
+    border-radius: 10px;
+    color: rgb(0, 0, 0);
+    width: 300px;
+}
+
+li span {
+    font-size: 1em;
+    font-weight: bolder;
+    font-family:sans-serif;
+    color: #b5b0b9;
+}
+
+#chat {
+    width: 80%;
+    margin: auto;
+}
+
+#message-form {
+    text-align: center;
+    position: fixed;
+    left: 0;
+    bottom: 0;
+    width: 100%;
+    background-color: #b7b5b9;
+}
+
+input {
+    width: 70%;
+    height: 30px;
+}
+
+button {
+    width: 25%;
+    height: 38px;
+}
+
+.sent {
+    text-align: right;
+    background-color: #d9d9d9ba;
+    margin-left: 50%;
+    font-size: 16px;
+}
+.receive{
+    text-align: left;
+    font-size: 17px;
+    color: white;
+}
+
+.receive span{
+    text-align: left;
+    font-size: 17px;
+    color: white;
+}
+
+.sent span {
+    margin-left: 5px;
+    color: #000000;
+}

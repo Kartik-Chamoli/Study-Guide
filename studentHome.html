@@ -18,7 +18,7 @@
 
     <link rel="stylesheet" type="text/css" href="studentHome.css">
     <link rel="stylesheet" type="text/css" href="navigation.css">
-
+    <link rel="stylesheet" href="chat.css">
     <script defer src="studentHome.js"></script>
 </head>
 <body>
@@ -27,37 +27,32 @@
     
 </div>
     
-    <!--div class="profileHeader">
-        <div class="profileName">
-            WELCOME ${%STUDENTNAME%}$
+      <div class="main-content"> 
+        <!-- Chat Content -->
+        <header>
+          <h2>Chat</h2>
+        </header>
+    
+        <div id="chat">
+          <!-- messages will display here -->
+          <ul id="messages"></ul>
+    
+          <!-- form to send message -->
+          <form id="message-form">
+            <input id="message-input" type="text" />
+            <button id="message-btn" type="submit">Send</button>
+          </form>
         </div>
-        <div class="dropdown">
-            <img class="dropbtn" src="assets/user.png" width="96" height="96" alt="PFP">
-        </button>
-            <div class="dropdown-content">
-              <a href="studentReg.html">Update Profile</a>
-              <a href="#">Link 2</a>
-              <a id="logout" href="index.html">Logout</a>
-            </div>
-          </div>
-    </div>
-
-    <div class="pill-nav">
-        <a  href="#">Upload Files</a>
-        <a href="#" onclick="test()">View Uploaded Files</a>
-        <a href="#">Contact</a>
-        <a href="#">About</a>
       </div>
 
-      <div class="main-content">
-
-      </div-->
     <script src="https://www.gstatic.com/firebasejs/7.8.2/firebase-app.js"></script>
     <script src="https://www.gstatic.com/firebasejs/7.8.2/firebase-auth.js"></script>
     <script src="https://www.gstatic.com/firebasejs/7.13.2/firebase-firestore.js"></script>    
     <script src="https://www.gstatic.com/firebasejs/7.10.0/firebase-storage.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/8.2.1/firebase-database.js"></script>
 
     <script src="firebaseconfig.js"></script>
     <script src="navigation.js"></script>
+    <script src="chat.js" defer></script>
 </body>
 </html>

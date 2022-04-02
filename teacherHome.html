@@ -12,24 +12,45 @@
 
     <script>
       $(function() {
-    $("#navigation").load("navigation.html");
+    $("#navigation").load("navigationTeacher.html");
     });
     </script>
     
     <link rel="stylesheet" type="text/css" href="teacherHome.css">
     <link rel="stylesheet" type="text/css" href="navigation.css">
-    
+    <link rel="stylesheet" href="chat.css">
+
     <!-- Firebase Scripts -->
     <script src="https://www.gstatic.com/firebasejs/7.8.2/firebase-app.js"></script>
     <script src="https://www.gstatic.com/firebasejs/7.8.2/firebase-auth.js"></script>
-    <script src="https://www.gstatic.com/firebasejs/7.13.2/firebase-firestore.js"></script>    
+    <script src="https://www.gstatic.com/firebasejs/7.13.2/firebase-firestore.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/7.10.0/firebase-storage.js"></script>    
+    <script src="https://www.gstatic.com/firebasejs/8.2.1/firebase-database.js"></script>
 
-    <script src="firebaseconfig.js"></script>
-    <script src="navigation.js"></script>
+    <script src="firebaseconfig.js" defer></script>
+    <script src="navigation.js" defer></script>
 </head>
 <body>
     <div id="navigation">
 
     </div>      
+    <div class="main-content"> 
+      <!-- Chat Content -->
+      <header>
+        <h2>Chat</h2>
+      </header>
+  
+      <div id="chat">
+        <!-- messages will display here -->
+        <ul id="messages"></ul>
+  
+        <!-- form to send message -->
+        <form id="message-form">
+          <input id="message-input" type="text" />
+          <button id="message-btn" type="submit">Send</button>
+        </form>
+      </div>
+    </div>
+    <script src="chatTeacher.js" defer></script>
 </body>
 </html>
